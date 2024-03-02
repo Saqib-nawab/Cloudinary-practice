@@ -11,6 +11,7 @@ const Upload = () => {
 
     const navigate = useNavigate();
 
+    //this is unauthenticated( http ) request which is why we don't need to send any other parameters (no timestamp and signature)
     const uploadFile = async (type) => {
         const data = new FormData();
         //a normal upload requires the file and upload preset information
@@ -18,7 +19,7 @@ const Upload = () => {
         data.append("upload_preset", type === 'image' ? 'images_preset' : 'videos_preset'); //these presets are created in the cloudinary account
 
         try {
-            let cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+            let cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME; //from cloudinary account credentials
             let resourceType = type === 'image' ? 'image' : 'video';
             let api = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`;
 
@@ -31,8 +32,9 @@ const Upload = () => {
         }
     }
 
+    //this is unauthenticated( http ) request which is why we don't need to send any other parameters (no timestamp and signature)
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); //stopping the page reloading on itself
         try {
             setLoading(true);
 
