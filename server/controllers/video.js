@@ -1,4 +1,4 @@
-import Video from "../models/Video.js";
+import Video from "../models/videos.js";
 
 export const createVideo = async (req, res, next) => {
     const { imgUrl, videoUrl } = req.body;
