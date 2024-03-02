@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
-import videoRoutes from "./routes/video.js";
-import signUploadRoutes from "./routes/sign-upload.js";
+import { videoRoutes } from "./routes/video.js";
+import { signUploadRoutes } from "./routes/sign-upload.js";
 import { errorHandler } from "./middlewares/error.js";
 
 dotenv.config();
